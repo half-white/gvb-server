@@ -1,6 +1,7 @@
 mysql:
   host: 127.0.0.1
   port: 3306
+  config: ""
   db: gvb_db
   user: root
   password: root
@@ -12,23 +13,23 @@ logger:
   show_line: true
   log_in_console: true
 system:
-  host: "0.0.0.0"
+  host: 0.0.0.0
   port: 8080
   env: release
 site_info:
-  created_at: "2023-06"
+  created_at: 2023-06
   bei_an: 湘ICP备2021010654号-1
   title: 个人博客
-  qq_image:
+  qq_image: ""
   version: 6.0.2
-  email:
-  wechat_image:
+  email: ""
+  wechat_image: ""
   name: xep
   job: 后端开发
   addr: 湖南长沙
-  slogan:
-  slogan_en:
-  web:
-  bilibili_url:
-  gitee_url:
-  github_url:
+  slogan: ""
+  slogan_en: ""
+  web: ""
+  bilibili_url: ""
+  gitee_url: ""
+  github_url: "1234"

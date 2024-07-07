@@ -1,8 +1,8 @@
 package settings_api
 
 import (
-	"fmt"
 	"gvb_server/config"
+	"gvb_server/core"
 	"gvb_server/global"
 	"gvb_server/models/res"
 
@@ -16,7 +16,12 @@ func (SettingsApi) SettingsInfoUpdateView(c *gin.Context) {
 		res.FailWithCode(res.ArgumentError, c)
 		return
 	}
-	fmt.Println("before", global.Config)
 	global.Config.SiteInfo = cr
-	fmt.Println("after", global.Config)
+	err = core.SetYaml()
+	if err != nil {
+		global.Log.Error(err)
+		res.FailWithMessage(err.Error(), c)
+		return
+	}
+	res.OkWith(c)
 }
