@@ -5,10 +5,12 @@ import (
 
 	"github.com/sirupsen/logrus"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
 var (
-	Config *config.Config
-	DB     *gorm.DB
-	Log    *logrus.Logger
+	Config   *config.Config //配置文件
+	DB       *gorm.DB       //数据库文件
+	Log      *logrus.Logger //日志文件
+	MysqlLog logger.Interface
 )

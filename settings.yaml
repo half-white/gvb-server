@@ -1,7 +1,7 @@
 mysql:
   host: 127.0.0.1
   port: 3306
-  config: ""
+  config: "charset=utf8mb4&parseTime=True&loc=Local"
   db: gvb_db
   user: root
   password: root
@@ -33,3 +33,30 @@ site_info:
   bilibili_url: ""
   gitee_url: ""
   github_url: "1234"
+jwt:
+  secret:
+  expries:
+  issuer:
+qq:
+  app_id:
+  key:
+  redirect:
+email:
+  host:
+  port:
+  user:
+  password:
+  default_from_eamil:
+  use_ssl:
+  user_tls:
+qi_niu:
+  enable: false
+  access_key:
+  secret_key:
+  bucket:
+  cdn:
+  zone:
+  size:
+upload:
+  size: 2
+  path: uploads/file
