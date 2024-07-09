@@ -51,12 +51,12 @@ email:
   user_tls:
 qi_niu:
   enable: false
-  access_key:
-  secret_key:
-  bucket:
+  access_key: mOggbV8AHiL00j_z5K6XZjQpNNov7iuVr26l_ofy
+  secret_key: m_jQ-S47QIE192kIdcUs7sH_uRcUwM4ZWcd36FT5
+  bucket: half-white
   cdn:
-  zone:
-  size:
+  zone: z2
+  size: 5
 upload:
   size: 2
   path: uploads/file
