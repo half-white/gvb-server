@@ -61,9 +61,9 @@ func UploadImage(data []byte, imageName string, prefix string) (filepath string,
 	}
 	dataLen := int64(len(data))
 
-	//获取当前实践
+	//获取当前时间
 	now := time.Now().Format("20060102150405")
-	key := fmt.Sprintf("%s/%s_%s.png", prefix, now, imageName)
+	key := fmt.Sprintf("%s/%s_%s", prefix, now, imageName)
 
 	err = formUploader.Put(context.Background(), &ret, upToken, key, bytes.NewReader(data), dataLen, &putExtra)
 	if err != nil {

@@ -106,6 +106,7 @@ func (ImagesApi) ImageUploadView(c *gin.Context) {
 			continue
 		}
 
+		//上传七牛云
 		if global.Config.Qiniu.Enable {
 			filePath, err = qiniu.UploadImage(byteData, fileName, "gvb")
 			if err != nil {
@@ -115,8 +116,9 @@ func (ImagesApi) ImageUploadView(c *gin.Context) {
 			resList = append(resList, FileUploadResponse{
 				FileName:  filePath,
 				IsSuccess: true,
-				Msg:       "上传成功",
+				Msg:       "上传七牛成功",
 			})
+			//图片入库
 			global.DB.Create(&models.BannerModel{
 				Path:      filePath,
 				Hash:      imageHash,
@@ -126,6 +128,7 @@ func (ImagesApi) ImageUploadView(c *gin.Context) {
 			continue
 		}
 
+		//本地存储
 		err = c.SaveUploadedFile(file, filePath)
 		if err != nil {
 			global.Log.Error(err)
