@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+    </div>
+
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+        //创建Vue应用实例
+        createApp({
+            data(){
+                return {
+                    //定义数据
+                    msg: 'hello vue3'
+                }
+            }
+        }).mounted("#app");
+    </script>
+</body>
+</html>
