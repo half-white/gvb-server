@@ -22,6 +22,15 @@ func (AdvertApi) AdvertCreateView(c *gin.Context) {
 		res.FailWithError(err, &cr, c)
 		return
 	}
+
+	//重复判断机制
+	var advert models.AdvertModel
+	err = global.DB.Take(&advert, "title = ?", cr.Title).Error
+	if err == nil {
+		res.FailWithMessage("该广告已经存在", c)
+		return
+	}
+
 	err = global.DB.Create(&models.AdvertModel{
 		Title:  cr.Title,
 		Href:   cr.Href,
