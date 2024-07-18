@@ -9,6 +9,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Tags 广告管理
+// @Summary 更新广告
+// @Description 更新广告
+// @Param data body AdverRequest	true "查询参数"
+// @Router /api/adverts/:id [put]
+// @Produce json
+// @Success 200 {object} res.Response{data=string}
 func (AdvertApi) AdvertUpdateView(c *gin.Context) {
 	id := c.Param("id")
 	var cr AdverRequest
