@@ -2,11 +2,11 @@ package models
 
 import "gvb_server/models/ctype"
 
-//菜单表
+//菜单表 菜单的的路径可以是 /path 也可以是路由别名
 type MenuModel struct {
 	MODEL
-	MenuTitle    string        `gorm:"size:32" json:"menu_title"`
-	MenuTitleEn  string        `gorm:"size:32" json:"menu_title_en"`
+	Title        string        `gorm:"size:32" json:"title"`
+	Path         string        `gorm:"size:32" json:"path"`
 	Slogan       string        `gorm:"size:64" json:"slogan"`                                                                     //slogan
 	Abstract     ctype.Array   `gorm:"" json:"abstract"`                                                                          //简介
 	AbstractTime int           `json:"abstract_time"`                                                                             //简介的切换时间

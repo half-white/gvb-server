@@ -181,6 +181,95 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/api/image_names": {
+            "get": {
+                "description": "图片名称列表",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "图片管理"
+                ],
+                "summary": "图片名称列表",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/res.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/images_api.ImageResponse"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/images": {
+            "get": {
+                "description": "图片列表",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "图片管理"
+                ],
+                "summary": "图片列表",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "key",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "sort",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/res.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/res.ListResponse-models_BannerModel"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -206,6 +295,33 @@ const docTemplate = `{
                 },
                 "title": {
                     "description": "显示的标题",
+                    "type": "string"
+                }
+            }
+        },
+        "ctype.ImageType": {
+            "type": "integer",
+            "enum": [
+                1,
+                2
+            ],
+            "x-enum-varnames": [
+                "Local",
+                "QiNiu"
+            ]
+        },
+        "images_api.ImageResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "图片名称",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "图片路径",
                     "type": "string"
                 }
             }
@@ -239,6 +355,39 @@ const docTemplate = `{
                 }
             }
         },
+        "models.BannerModel": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "hash": {
+                    "description": "图片的hash值，用于判断重复图片",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键",
+                    "type": "integer"
+                },
+                "image_type": {
+                    "description": "图片存储类型（本地、七牛）",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/ctype.ImageType"
+                        }
+                    ]
+                },
+                "name": {
+                    "description": "图片名称",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "图片路径",
+                    "type": "string"
+                }
+            }
+        },
         "models.RemoveRequest": {
             "type": "object",
             "required": [
@@ -261,6 +410,17 @@ const docTemplate = `{
                 },
                 "list": {
                     "$ref": "#/definitions/models.AdvertModel"
+                }
+            }
+        },
+        "res.ListResponse-models_BannerModel": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "list": {
+                    "$ref": "#/definitions/models.BannerModel"
                 }
             }
         },
