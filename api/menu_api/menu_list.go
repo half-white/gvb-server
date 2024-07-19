@@ -31,7 +31,8 @@ func (MenuApi) MenuListView(c *gin.Context) {
 	var menus []MenuResponse
 	for _, model := range menuList {
 		//model就是一个菜单
-		var banners []Banner
+		//申明后需要开辟空间，解决nil值问题
+		var banners = make([]Banner, 0)
 		for _, banner := range menuBanners {
 			if model.ID != banner.MenuID {
 				continue
