@@ -34,9 +34,9 @@ site_info:
   gitee_url: ""
   github_url: "1234"
 jwt:
-  secret:
-  expries:
-  issuer:
+  secret: xep
+  expries: 2
+  issuer: "1234"
 qq:
   app_id:
   key:
