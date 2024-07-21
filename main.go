@@ -13,7 +13,6 @@ import (
 // @description gvb_server API文档
 // @host 127.0.0.01:8080
 // @BasePath /
-
 func main() {
 	//读取配置文件
 	core.InitConf()
@@ -22,6 +21,7 @@ func main() {
 
 	//连接数据库
 	global.DB = core.InitGorm()
+	global.Redis = core.ConnectRedis()
 
 	//命令行参数绑定
 	option := flag.Parse()
