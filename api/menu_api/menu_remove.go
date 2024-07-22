@@ -35,18 +35,18 @@ func (MenuApi) MenuRemoveView(c *gin.Context) {
 	err = global.DB.Transaction(func(tx *gorm.DB) error {
 		err = global.DB.Model(&menuList).Association("Banners").Clear()
 		if err != nil {
-			global.Log.Error()
+			global.Log.Error(err)
 			return err
 		}
 		err = global.DB.Delete(&menuList).Error
 		if err != nil {
-			global.Log.Error()
+			global.Log.Error(err)
 			return err
 		}
 		return nil
 	})
 	if err != nil {
-		global.Log.Error()
+		global.Log.Error(err)
 		res.FailWithMessage("删除菜单失败", c)
 		return
 	}

@@ -42,10 +42,10 @@ qq:
   key:
   redirect:
 email:
-  host:
-  port:
-  user:
-  password:
+  host: "smtp.qq.com"
+  port: 465
+  user: 1323185760@qq.com
+  password: hindymnuwohoibhc
   default_from_eamil:
   use_ssl:
   user_tls:
