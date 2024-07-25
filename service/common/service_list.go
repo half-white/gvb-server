@@ -12,6 +12,7 @@ type Option struct {
 	Debug bool
 }
 
+// 查询Mysql里面的数据
 func ComList[T any](model T, option Option) (list []T, count int64, err error) {
 
 	DB := global.DB
@@ -24,6 +25,7 @@ func ComList[T any](model T, option Option) (list []T, count int64, err error) {
 	}
 	query := DB.Where(model)
 
+	//给"id"列增加索引
 	count = query.Select("id").Find(&list).RowsAffected
 	//这里的query会受到上面查询影响，需要手动复位
 	query = DB.Where(model)

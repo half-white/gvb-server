@@ -44,15 +44,15 @@ qq:
 email:
   host: "smtp.qq.com"
   port: 465
-  user: ***************
-  password: *************
+  user: 1323185760@qq.com
+  password: 
   default_from_eamil:
   use_ssl:
   user_tls:
 qi_niu:
   enable: True
-  access_key: *****************
-  secret_key: *******************
+  access_key: 
+  secret_key: 
   bucket: half-white
   cdn:
   prefix: "gvb"

@@ -17,7 +17,7 @@ func InitRouter() *gin.Engine {
 
 	router := gin.Default()
 
-	router.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))
+	router.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler)) //swag自动化文档配置
 
 	//设置路由组
 	apiRouterGroup := router.Group("api")
@@ -28,6 +28,8 @@ func InitRouter() *gin.Engine {
 	routerGroupApp.AdvertRouter()
 	routerGroupApp.MenuRouter()
 	routerGroupApp.UserRouter()
+	routerGroupApp.TagRouter()
+	routerGroupApp.MessageRouter()
 
 	return router
 }
