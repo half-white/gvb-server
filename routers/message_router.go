@@ -9,5 +9,6 @@ func (router RouterGroup) MessageRouter() {
 	app := api.ApiGroupApp.MessageApi
 	router.POST("messages", middleware.JwtAuth(), app.MessageCreateView)
 	router.GET("messages_all", middleware.JwtAdmin(), app.MessageListAllView)
-	router.GET("messgaes", middleware.JwtAuth(), app.MessageListView)
+	router.GET("messages", middleware.JwtAuth(), app.MessageListView)
+	router.GET("messages_record", middleware.JwtAuth(), app.MessageRecordView)
 }
