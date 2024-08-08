@@ -26,12 +26,12 @@ func (MessageApi) MessageCreateView(c *gin.Context) {
 	}
 
 	var sendUser, revUser models.UserModel
-	err = global.DB.Take(&sendUser, cr.SendUserID).Error
+	err = global.DB.Select("id").Take(&sendUser, cr.SendUserID).Error
 	if err != nil {
 		res.FailWithMessage("发送人不存在", c)
 		return
 	}
-	err = global.DB.Take(&revUser, cr.RevUserID).Error
+	err = global.DB.Select("id").Take(&revUser, cr.RevUserID).Error
 	if err != nil {
 		res.FailWithMessage("接收人不存在", c)
 		return

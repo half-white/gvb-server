@@ -32,7 +32,7 @@ func (AdvertApi) AdvertCreateView(c *gin.Context) {
 
 	//重复判断机制
 	var advert models.AdvertModel
-	err = global.DB.Take(&advert, "title = ?", cr.Title).Error
+	err = global.DB.Select("title").Take(&advert, "title = ?", cr.Title).Error
 	if err == nil {
 		res.FailWithMessage("该广告已经存在", c)
 		return
